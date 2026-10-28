@@ -1,0 +1,52 @@
+{
+  "audit_timestamp": "2026-10-28T18:29:00+01:00",
+  "pre_migration_baseline": {
+    "database": {
+      "name": "onprem_store",
+      "schema_file": "source-environment\\db\\schema_and_data.sql",
+      "sha256": "7be90dcdd91bf56a7fbf8a88bc01ee9269bb3bb253e859ee0b5f610bb48aded6",
+      "expected_tables": [
+        "customers",
+        "products",
+        "orders"
+      ],
+      "expected_counts": {
+        "customers": 5,
+        "products": 5,
+        "orders": 5
+      }
+    },
+    "assets": {
+      "count": 5,
+      "manifest": {
+        "firewall-appliance.png": "60960424cc1e7d6b9f741f51ad957c31221de17e01c030ee46ea4b4a259571ae",
+        "nas-storage-8bay.png": "ac809c41afc562e2f4059ca8f3ed063507442bd352477caf4e078369cc542ca8",
+        "server-rack-2u.png": "b5e905247781b9c0173bd329aead6dc000910563c1712414f35e89c4f2ca11d8",
+        "switch-48p.png": "7c193ea06caa49d4b7dd36ef6613cd502841c4cebb7de8e045b55387c4c1b85d",
+        "ups-3000va.png": "31695830a101a2769d2d0483b1fc4177e8768543d177c10ee6f3266f5098310a"
+      }
+    }
+  },
+  "post_migration_state": {
+    "database": {
+      "name": "onprem_store",
+      "rds_endpoint": "migration-mysql-db.cba62y4wg81m.eu-west-1.rds.amazonaws.com",
+      "actual_counts": {
+        "customers": 5,
+        "products": 5,
+        "orders": 5
+      }
+    },
+    "s3_storage": {
+      "bucket": "migration-assets-208643047372",
+      "synced_assets_count": 5,
+      "status": "VERIFIED_MATCH"
+    }
+  },
+  "validation_summary": {
+    "database_integrity": "100% MATCH (0 Data Loss)",
+    "asset_synchronization": "100% MATCH",
+    "security_group_chaining": "VERIFIED (Port 3306 restricted to app-sg)",
+    "overall_status": "MIGRATION_SUCCESSFUL"
+  }
+}
